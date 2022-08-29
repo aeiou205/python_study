@@ -1,4 +1,7 @@
 #THE CAR CLASS
+from cgi import MiniFieldStorage
+
+
 class Car:
 
     #INIT METOD
@@ -24,7 +27,15 @@ class Car:
     
     def update_odometer(self, mileage):
         """Set the odometer reading to the given value."""
-        self.odometer_reading = mileage
+       
+        if mileage>=self.odometer_reading:
+            self.odometer_reading = mileage      
+        else:
+            print("You can't roll back an odomoter")
+
+    def increment_odometer(self, miles):
+        """Add the given amount to the odometer reading"""
+        self.odometer_reading += miles
 
 
 
@@ -34,12 +45,14 @@ def main():
     print(my_new_car.get_descriptive_name())
 
     """Modifying an Attribute’s Value Directly"""
-    my_new_car.odometer_reading = 20432103
+    my_new_car.odometer_reading = 23
     my_new_car.read_odometer()
-    my_new_car.update_odometer(213987632198743987213)
+    my_new_car.update_odometer(50)
     my_new_car.read_odometer()
-
-
+    my_new_car.update_odometer(70)
+    my_new_car.read_odometer()
+    my_new_car.increment_odometer(20)
+    my_new_car.read_odometer()
 
 
 if __name__ == "__main__":
