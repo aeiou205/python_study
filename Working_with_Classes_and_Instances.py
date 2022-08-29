@@ -1,3 +1,5 @@
+
+
 #THE CAR CLASS
 from cgi import MiniFieldStorage
 
@@ -57,3 +59,8 @@ def main():
 
 if __name__ == "__main__":
     main()
+    
+    
+"""La seguridad efectiva requiere
+atención extrema a los detalles además de controles básicos como los que se muestran aquí
+"""
