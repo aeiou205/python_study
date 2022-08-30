@@ -1,7 +1,5 @@
 """You don’t always have to start from scratch when writing a class"""
 #THE CAR CLASS
-from cgi import MiniFieldStorage
-
 class Car:
 
     #INIT METOD
@@ -45,17 +43,28 @@ class Battery:
         """print a statement describing the battery size"""
         print(f"bateria es : {self.battery_size}-kWh battery.")
 
+    def fill_gas_tank():
+        """Electric cars don't have gas tanks"""
+        print("This car does not need a gas tanks!")
+
+    def get_range(self):
+        """print statement about the range this battery provides"""
+        if self.battery_size == 75:
+            range = 260
+        elif self.battery_size == 100:
+            range = 315
 
 class ElectricCar(Car):
     """Represent aspect of a car, specif to electric vehicles"""
     def __init__(self, make,model,year): 
         """Initialize attributes of the parent class
         them initialize attributes specific to an electric car"""
+        super().__init__(make, model, year) #la funcion super es una fucnion especial que le permite llamar un metodo de la clase padre
+        self.battery_size = 75         #le dice a python que llame a init a esta seccion
+
 
     def describe_battery(self):
-        super().__init__(make, model, year) #la funcion super es una fucnion especial que le permite llamar un metodo de la clase padre
-        self.battery = Battery()             #le dice a python que llame a init a esta seccion
-
+       
         """print a statement describing the battery size"""
         print(f"bateria es : {self.battery_size}-kWh battery.")
 
@@ -74,9 +83,14 @@ def main():
     my_new_car.increment_odometer(20)
     my_new_car.read_odometer()
 
+
+    gas = Battery()
+    gas.fill_gas_tank()
+
     my_tesla = ElectricCar('tesla', 'model s', 2019)
     print(my_tesla.get_descriptive_name())
-    my_tesla.
+
+    gas.battery.get_range()
 
 if __name__ == "__main__":
     main()
