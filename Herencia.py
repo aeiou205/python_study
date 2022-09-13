@@ -1,7 +1,6 @@
 """You don’t always have to start from scratch when writing a class"""
 #THE CAR CLASS
 class Car:
-
     #INIT METOD
     def __init__(self, make,model,year):
         """inicializa los atributos"""
@@ -36,23 +35,24 @@ class Car:
         self.odometer_reading += miles
 
 class Battery:
-    def __init__(self,battery_size=75):
+    def __init__(self,battery_size=75,range=0):
         self.battery_size = battery_size
-
+        self.range=range
     def describe_battery(self):
         """print a statement describing the battery size"""
         print(f"bateria es : {self.battery_size}-kWh battery.")
 
-    def fill_gas_tank():
+    def fill_gas_tank(self):
         """Electric cars don't have gas tanks"""
         print("This car does not need a gas tanks!")
 
     def get_range(self):
         """print statement about the range this battery provides"""
         if self.battery_size == 75:
-            range = 260
+            self.range = 260
         elif self.battery_size == 100:
-            range = 315
+            self.range = 315
+        print(f"this range is:{self.range}.")
 
 class ElectricCar(Car):
     """Represent aspect of a car, specif to electric vehicles"""
@@ -60,13 +60,17 @@ class ElectricCar(Car):
         """Initialize attributes of the parent class
         them initialize attributes specific to an electric car"""
         super().__init__(make, model, year) #la funcion super es una fucnion especial que le permite llamar un metodo de la clase padre
-        self.battery_size = 75         #le dice a python que llame a init a esta seccion
+        self.battery_size = Battery()         #le dice a python que llame a init a esta seccion
 
 
     def describe_battery(self):
        
         """print a statement describing the battery size"""
-        print(f"bateria es : {self.battery_size}-kWh battery.")
+        print(f"this car has : {self.battery_size}-kWh battery.")
+
+
+
+
 
 def main():
 
@@ -89,8 +93,11 @@ def main():
 
     my_tesla = ElectricCar('tesla', 'model s', 2019)
     print(my_tesla.get_descriptive_name())
+    my_tesla.battery_size.describe_battery()
 
-    gas.battery.get_range()
+    gas.get_range()
 
 if __name__ == "__main__":
     main()
+
+
